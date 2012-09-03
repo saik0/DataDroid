@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import android.content.Context;
-import android.net.http.AndroidHttpClient;
 import android.os.Looper;
 import android.util.Log;
 import android.webkit.WebSettings;
@@ -301,7 +300,7 @@ public class NetworkConnection {
         }
 
         // Create the Request
-        final AndroidHttpClient client = AndroidHttpClient.newInstance(userAgent != null ? userAgent : sDefaultUserAgent);
+        final DataDroidHttpClient client = DataDroidHttpClient.newInstance(userAgent != null ? userAgent : sDefaultUserAgent);
         if (LogConfig.DP_DEBUG_LOGS_ENABLED) {
             Log.d(LOG_TAG, "retrieveResponseFromService - Request user agent : " + userAgent);
         }
@@ -400,7 +399,7 @@ public class NetworkConnection {
 
             // Activate the gzip compression if asked
             if (isGzipEnabled) {
-                AndroidHttpClient.modifyRequestToAcceptGzipResponse(request);
+                DataDroidHttpClient.modifyRequestToAcceptGzipResponse(request);
             }
 
             if (LogConfig.DP_INFO_LOGS_ENABLED) {
